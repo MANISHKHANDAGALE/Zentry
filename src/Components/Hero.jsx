@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import { useRef } from 'react'
+import { useRef,useEffect } from 'react'
 import Button from './Button'
 import { TiLocationArrow } from 'react-icons/ti'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import {ScrollTrigger} from 'gsap/all'
+
+gsap.registerPlugin(ScrollTrigger)
 const Hero = () => {
 
     const [currentIndex, setCurrentIndex] = useState(1)
@@ -23,6 +26,12 @@ const Hero = () => {
     }
     const upcomingVideoIndex = (currentIndex % totalvideo) + 1;
     const getVideosrc = (index) => `videos/hero-${index}.mp4`;
+    useEffect(() => {
+    if(loadedVideos === totalvideo - 1){
+        setIsLoading(false);
+    }
+    },[loadedVideos])
+    
 
 useGSAP(() =>{
 if(hasClicked){
@@ -66,6 +75,15 @@ useGSAP(()=>{
 
     return (
         <div className='relative h-dvh w-screen overflow-x-hidden'>
+            {isLoading && (
+              <div className='absolute flex-center z-[100] h-dvh w-screen overflow-hidden bg-violet-50'>
+                  <div className='three-body'>
+                    <div className='three-body__dot'/>
+                    <div className='three-body__dot'/>
+                    <div className='three-body__dot'/>
+                </div>
+              </div>
+            )}
             <div id='video-frame' className='relative overflow-hidden rounded-lg z-10 bg-blue-75 h-dvh w-screen' >
                 <div>
                     {/* //minivdp */}
