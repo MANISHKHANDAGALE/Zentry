@@ -41,7 +41,7 @@ borderRadius: 0 ,
         </div>
         <div id='clip' className='h-dvh w-screen'>
             <div id='mask-clip-path' className='about-image'>
-<img src="img/about.webp" alt="background" className='absolute top-0 left-0 size-full object-cover' />
+<img src="img/about.webp" alt="background" className='absolute top-0 left-0 size-full object-cover min-h-screen w-screen' />
             </div>
         </div>
     </div>
