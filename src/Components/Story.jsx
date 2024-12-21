@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import AnimatedTitle from './AnimatedTitle'
 import gsap from 'gsap';
 import RoundedCorners from './RoundedCorners';
+import Button from './Button';
 const Story = () => {
     const frameRef = useRef('null');
     const handleMouseLeave = () => {
@@ -65,13 +66,17 @@ const rotateY = ((x - centerX) / centerX) * 10;
                         <RoundedCorners />
                     </div>
                 </div>
-                <div>
-                    <div>
-                        <p>
+                <div className='-mt-80 md:-mt-64 md:me-44 flex w-full justify-between md:justify-end'>
+                    <div className='flex h-full w-fit flex-col items-center md:items-start'>
+                        <p className='mt-3 text-center max-w-sm font-circular-web text-violet-50 md:text-start'>
                         Where realms converge, lies Zentry and the boundless pillar.
                             Discover its secrets and shape your fate amidst infinite
                             opportunities
                         </p>
+                        <Button 
+                        title="Discover ProLogue"
+                        containerclass="mt-5"
+                        />
                     </div>
                 </div>
             </div>
