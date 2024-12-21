@@ -32,10 +32,10 @@ return () => ctx.revert();
 
 
   return (
-    <div ref={containerRef} className={`text-4xl font-zentry mt-5 text-center uppercase leading-[0.8] md:text-[6rem] ${containerclass} `}>
+    <div ref={containerRef} className={`text-4xl text-white font-zentry mt-5 text-center uppercase leading-[0.8] md:text-[6rem] ${containerclass} `}>
 
     {title.split("<br />").map((line,index)=> (
-<div key={index} className='flex-center max-w-full flex-wrap gap-2 px-10 md:gap-3'>
+<div key={index} className='flex-center text-white max-w-full flex-wrap gap-2 px-10 md:gap-3'>
     {line.split(" ").map((word,i)=>(
 <span key={i} className='animated-word' dangerouslySetInnerHTML={{__html:word}} />
     ))}

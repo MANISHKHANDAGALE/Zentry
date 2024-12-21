@@ -31,7 +31,27 @@ const Hero = () => {
         setIsLoading(false);
     }
     },[loadedVideos])
+
+    const getRandomColor = () =>{
+        let color;
+        do {
+          
+          const r = Math.floor(Math.random() * 256);
+          const g = Math.floor(Math.random() * 256);
+          const b = Math.floor(Math.random() * 256);
+      
+          // Convert the RGB values into a string
+          color = `rgb(${r}, ${g}, ${b})`;
+        } while (color === 'rgb(0, 0, 0)'); 
+      
+        return color;
+    }
+    const [color, setColor] = useState('text-blue-500'); 
+
     
+    useEffect(() => {
+      setColor(getRandomColor());
+    }, []); 
 
 useGSAP(() =>{
 if(hasClicked){
@@ -125,7 +145,7 @@ useGSAP(()=>{
 
                 </div>
             </div>
-            <h1 className='absolute bottom-5 right-5  text-5xl special-font hero-heading text-black '>
+            <h1 className='absolute bottom-5 right-5  text-5xl special-font hero-heading  ' style={{color:color}}>
                     G<b>A</b>MING
                 </h1>
         </div>

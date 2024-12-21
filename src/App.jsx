@@ -3,14 +3,22 @@ import Hero from './Components/Hero'
 import About from './Components/About'
 import Navbar from './Components/Navbar'
 import Features from './Components/Features'
+import Story from './Components/Story'
 
 const App = () => {
   return (
-    <main className='relative min-h-screen w-screen overflow-x-hidden bg-red-700 '>
+    <main className='relative min-h-screen w-screen overflow-x-hidden  '>
+      <video id='background-video'
+      src='/videos/bg-video.mp4'
+      autoPlay
+      muted
+      loop
+      />
       <Navbar/>
       <Hero/>
       <About/>
       <Features/>
+      <Story />
     </main>
   )
 }

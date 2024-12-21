@@ -1,6 +1,6 @@
 import React from 'react'
 import { TiLocationArrow } from 'react-icons/ti'
-
+import { useRef, useState } from 'react'
 
 const BentoCard = ({src,title,description,IsComingSoon}) =>{
   return(
@@ -23,8 +23,29 @@ const BentoCard = ({src,title,description,IsComingSoon}) =>{
   )
 }
 const BentoTilt = ({children,className=""}) =>{
+
+const [transformStyle, settransformStyle] = useState('')
+const  itemRef = useRef(null)
+
+const handleMouseLeave = () => {
+settransformStyle('')
+}
+
+const handleMouseMove = (e) => {
+  const { left, top, width, height } = itemRef.current.getBoundingClientRect();
+
+  const relativeX = (e.clientX - left) / width;
+  const relativeY = (e.clientY - top) / height;
+
+  const tiltX = (relativeY - 0.5) * 5.5;
+  const tiltY = (relativeX - 0.5) * -5.5;
+
+  const newTransform = `perspective(500px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(0.98, 0.98, 0.98)`;
+
+  settransformStyle(newTransform)
+}
   return(
-    <div className={className}>
+    <div ref={itemRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={className} style={{transform:transformStyle}}>
 {children}
     </div>
   )
